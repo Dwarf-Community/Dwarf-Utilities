@@ -36,7 +36,7 @@ class UtilitiesAPI:
             'minute': minute_difference,
         }
         
-       return time_difference
+        return time_difference
     
     def get_utc_offset(user):
         """Retrieves a user's UTC offset from the database.
