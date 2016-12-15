@@ -24,7 +24,7 @@ class UtilitiesAPI:
         
         if isinstance(local_time, dict):
             local_time = [local_time['hour'], local_time['minute']]
-        else if isinstance(local_time, str):
+        elif isinstance(local_time, str):
             local_time = local_time.split(':')
         utc_time = time.gmtime()
         
