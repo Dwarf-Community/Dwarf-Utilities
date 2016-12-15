@@ -7,8 +7,6 @@ from dwarf.bot import subcommand, send_command_help
 from .api import UtilitiesAPI
 
 
-log = logging.getLogger("dwarf.utilities")
-
 utilities = UtilitiesAPI()
 
 
