@@ -6,6 +6,8 @@ from dwarf import permissions
 from dwarf.bot import subcommand, send_command_help
 from .api import UtilitiesAPI
 
+import aiohttp
+
 
 utilities = UtilitiesAPI()
 
@@ -19,17 +21,17 @@ class Utilities:
     
     @commands.command(pass_context=True, hidden=True)
     @permissions.owner()
-    async def say(self, ctx, *, message, channel_id=None):
-        if channel is None:
-            await self.bot.say(message)
-        else:
-            destination = await self.bot.get_channel(channel_id)
-            await self.bot.send_message(destination, message)
-            await self.bot.say("Done.")
+    async def say(self, ctx, *, channel : discord.Channel, message):
+        await self.bot.send_message(channel, message)
+        await self.bot.say("Your message has been sent.")
     
-    @commands.command(pass_context=True)
     @subcommand(command_group='set')
+    @commands.command(pass_context=True)
     async def clock(self, ctx, *, time):
         utc_offset = utilities.calculate_utc_offset(time)
         utilities.save_utc_offset(ctx.message.author, utc_offset)
         await self.bot.say("Done.")
+
+
+def setup(bot):
+    bot.add_cog(Utilities(bot))
