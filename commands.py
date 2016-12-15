@@ -21,7 +21,7 @@ class Utilities:
     
     @commands.command(pass_context=True, hidden=True)
     @permissions.owner()
-    async def say(self, ctx, *, channel : discord.Channel, message):
+    async def say(self, ctx, channel : discord.Channel, *, message):
         await self.bot.send_message(channel, message)
         await self.bot.say("Your message has been sent.")
     
