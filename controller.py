@@ -1,15 +1,13 @@
-"""Untested, use at own risk"""
-
-from dwarf.core.api import CoreAPI
+from dwarf.core.controller import CoreController
 from .models import UserInfo
 
 import time
 
 
-core = CoreAPI()
+core = CoreController()
 
 
-class UtilitiesAPI:
+class UtilitiesController:
     
     def calculate_utc_offset(local_time):
         """Calculates UTC offset using local time.
